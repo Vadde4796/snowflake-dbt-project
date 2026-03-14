@@ -8,7 +8,7 @@ select
     cast(order_date as date)                                    as order_date,
     status,
     case
-        when nullif(shipping_date, '') is null then null
-        else cast(shipping_date as date)
+        when shipping_date is null or trim(shipping_date) = '' then null
+        else try_cast(shipping_date as date)
     end                                                         as shipping_date
 from source
