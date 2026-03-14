@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: >
+      Customer dimension with lifetime order stats joined in.
+      One row per customer.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: dim_products
+    description: >
+      Product dimension with sales aggregates (units sold, revenue, order count).
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+
+  - name: fct_orders
+    description: >
+      Fact table — one row per order with totals, cost, profit, and shipping lag.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+
+  - name: customer_lifetime_value
+    description: >
+      Snowpark Python model. Calculates predicted CLV per customer and assigns
+      a High / Medium / Low value segment.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: clv_segment
+        tests:
+          - accepted_values:
+              values: ['High Value', 'Medium Value', 'Low Value']
+
+  - name: rfm_segmentation
+    description: >
+      Snowpark Python model. Scores each customer on Recency, Frequency and
+      Monetary value (1-5 each, using ntile quintiles) and assigns a segment:
+      Champions, Loyal Customers, Potential Loyalists, At Risk, or Lost.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: customer_segment
+        tests:
+          - accepted_values:
+              values: ['Champions', 'Loyal Customers', 'Potential Loyalists', 'At Risk', 'Lost']

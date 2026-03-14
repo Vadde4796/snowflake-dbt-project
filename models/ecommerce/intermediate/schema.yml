@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: >
+      Orders enriched with aggregated item totals, cost, profit,
+      and days-to-ship. One row per order.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: order_total
+        description: Sum of all line item totals for the order.
+      - name: order_profit
+        description: order_total minus order_cost.

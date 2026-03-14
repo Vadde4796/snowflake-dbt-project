@@ -1,0 +1,11 @@
+product_id,product_name,category,price,cost
+1,Laptop Pro 15,Electronics,1299.99,800.00
+2,Wireless Mouse,Electronics,29.99,10.00
+3,Mechanical Keyboard,Electronics,89.99,40.00
+4,USB-C Hub,Electronics,49.99,18.00
+5,Running Shoes,Apparel,119.99,45.00
+6,Yoga Mat,Sports,39.99,12.00
+7,Water Bottle,Sports,24.99,8.00
+8,Backpack,Apparel,79.99,30.00
+9,Notebook Set,Stationery,19.99,6.00
+10,Desk Lamp,Home,44.99,15.00

@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Cleaned and typed customer records from the raw seed.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: email
+        tests: [unique, not_null]
+
+  - name: stg_products
+    description: Cleaned product catalog with derived margin columns.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+
+  - name: stg_orders
+    description: Cleaned orders with properly typed dates and nullable shipping_date for cancelled orders.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed', 'cancelled']
+
+  - name: stg_order_items
+    description: Cleaned order line items with a computed line_total column.
+    columns:
+      - name: order_item_id
+        tests: [unique, not_null]
