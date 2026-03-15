@@ -101,12 +101,6 @@ snowflake-dbt-project/
 │   ├── raw_orders.csv
 │   └── raw_order_items.csv
 └── models/
-    ├── example/                        # Quickstart examples
-    │   ├── my_first_dbt_model.sql
-    │   ├── my_second_dbt_model.sql
-    │   ├── my_first_python_model.py
-    │   ├── my_second_python_model.py
-    │   └── schema.yml
     └── ecommerce/
         ├── staging/
         │   ├── stg_customers.sql
